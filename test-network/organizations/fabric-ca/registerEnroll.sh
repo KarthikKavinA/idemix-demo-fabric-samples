@@ -84,6 +84,24 @@ function createOrg1() {
   { set +x; } 2>/dev/null
 
   cp "${PWD}/organizations/peerOrganizations/org1.example.com/msp/config.yaml" "${PWD}/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/config.yaml"
+
+  ## Added here
+  ## Idemix MSP
+  mkdir -p ${PWD}/organizations/peerOrganizations/org1.example.com/idemixmsp
+  
+  ## "msp"
+  mkdir -p ${PWD}/organizations/peerOrganizations/org1.example.com/idemixmsp/msp
+  cp ${PWD}/organizations/peerOrganizations/org1.example.com/msp/IssuerPublicKey ${PWD}/organizations/peerOrganizations/org1.example.com/idemixmsp/msp
+  cp ${PWD}/organizations/peerOrganizations/org1.example.com/msp/IssuerRevocationPublicKey ${PWD}/organizations/peerOrganizations/org1.example.com/idemixmsp/msp/RevocationPublicKey
+
+  ## "ca"
+  mkdir -p ${PWD}/organizations/peerOrganizations/org1.example.com/idemixmsp/ca
+  cp ${PWD}/organizations/peerOrganizations/org1.example.com/msp/IssuerPublicKey ${PWD}/organizations/peerOrganizations/org1.example.com/idemixmsp/ca
+  cp ${PWD}/organizations/fabric-ca/org1/msp/keystore/IssuerSecretKey ${PWD}/organizations/peerOrganizations/org1.example.com/idemixmsp/ca
+  cp ${PWD}/organizations/fabric-ca/org1/msp/keystore/IssuerRevocationPrivateKey ${PWD}/organizations/peerOrganizations/org1.example.com/idemixmsp/ca/RevocationKey
+
+
+
 }
 
 function createOrg2() {

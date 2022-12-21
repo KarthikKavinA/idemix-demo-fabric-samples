@@ -98,6 +98,31 @@ Organizations:
                 Type: Signature
                 Rule: "OR('Org2MSP.peer')"
 
+    - &Org1IdemixMSP
+        # defaultorg defines the organization which is used in the sampleconfig
+        # of the fabric.git development environment
+        name: Org1IdemixMSP
+
+        # id to load the msp definition as
+        id: Org1IdemixMSP
+
+        msptype: idemix
+        mspdir: ../organizations/peerOrganizations/org1.example.com/idemixmsp
+
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: "OR('Org1IdemixMSP.member')"
+            Writers:
+                Type: Signature
+                Rule: "OR('Org1IdemixMSP.member')"
+            Admins:
+                Type: Signature
+                Rule: "OR('Org1IdemixMSP.member')"
+            Endorsement:
+                Type: Signature
+                Rule: "OR('Org1IdemixMSP.member')"
+
 ################################################################################
 #
 #   SECTION: Capabilities
@@ -312,4 +337,5 @@ Profiles:
             Organizations:
                 - *Org1
                 - *Org2
+                - *Org1IdemixMSP
             Capabilities: *ApplicationCapabilities
